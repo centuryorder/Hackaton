@@ -28,6 +28,10 @@
 // most launchpads have a red LED
 
 
+
+
+
+
 //see pins_energia.h for more LED definitions
 //#define LED GREEN_LED
 
@@ -57,13 +61,6 @@ void setup() {
 void loop(){
   // read the state of the pushbutton value:
   buttonState = digitalRead(buttonPin);
-  while( pushed != true)
-  {
-    digitalWrite(ledPin, HIGH);
-    digitalWrite(LED, HIGH);
-    delay(1000);
-    digitalWrite(LED, LOW);
-    delay(1000);
     if(buttonState == HIGH)
     {
       if(pushed == false)
@@ -76,5 +73,16 @@ void loop(){
       }
     }
   }
+
+
+    while(pushed == true)
+  {
+    digitalWrite(ledPin, HIGH);
+    digitalWrite(LED, HIGH);
+    delay(1000);
+    digitalWrite(LED, LOW);
+    delay(1000);
+  }
+
 }
 
