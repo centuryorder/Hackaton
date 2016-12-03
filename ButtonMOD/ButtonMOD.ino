@@ -44,7 +44,7 @@ int buttonState = 0;         // variable for reading the pushbutton status
 void setup() {
   Serial.begin(9600);
   pinMode(P1_0, OUTPUT);
-  Serial.println(Pin
+  Serial.println("Pin");
   // initialize the LED pin as an output:
   pinMode(ledPin, OUTPUT);      
   // initialize the pushbutton pin as an input:
