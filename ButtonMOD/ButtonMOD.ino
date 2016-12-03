@@ -1,36 +1,32 @@
 /*
-  Button
- 
- Turns on and off a light emitting diode(LED) connected to digital  
- pin 13, when pressing a pushbutton attached to pin 2. 
- 
- 
- The circuit:
- * LED attached from pin 13 to ground 
- * pushbutton attached to pin 2 from +3.3V
- * 10K resistor attached to pin 2 from ground
- 
- * Note: on most Arduinos there is already an LED on the board
- attached to pin 13.
- 
- 
- created 2005
- by DojoDave <http://www.0j0.org>
- modified 30 Aug 2011
- by Tom Igoe
- modified Apr 27 2012
- by Robert Wessels
- 
- This example code is in the public domain.
- 
- http://www.arduino.cc/en/Tutorial/Button
- */
+ Button
+
+Turns on and off a light emitting diode(LED) connected to digital  
+pin 13, when pressing a pushbutton attached to pin 2. 
+
+
+The circuit:
+* LED attached from pin 13 to ground 
+* pushbutton attached to pin 2 from +3.3V
+* 10K resistor attached to pin 2 from ground
+
+* Note: on most Arduinos there is already an LED on the board
+attached to pin 13.
+
+
+created 2005
+by DojoDave <http://www.0j0.org>
+modified 30 Aug 2011
+by Tom Igoe
+modified Apr 27 2012
+by Robert Wessels
+
+This example code is in the public domain.
+
+http://www.arduino.cc/en/Tutorial/Button
+*/
 // most launchpads have a red LED
-
-
-
-
-
+const int LED = RED_LED;
 
 //see pins_energia.h for more LED definitions
 //#define LED GREEN_LED
@@ -39,7 +35,6 @@
 // set pin numbers:
 const int buttonPin = PUSH2;     // the number of the pushbutton pin
 const int ledPin =  GREEN_LED;      // the number of the LED pin
-const int LED = RED_LED;
 boolean pushed = false;
 
 
@@ -61,28 +56,26 @@ void setup() {
 void loop(){
   // read the state of the pushbutton value:
   buttonState = digitalRead(buttonPin);
-    if(buttonState == HIGH)
+  if(buttonState == HIGH)
+  {
+    if(pushed == false)
     {
-      if(pushed == false)
-      {
-        pushed = true;
-      }
-      else
-      {
-        pushed = false;
-      }
+      pushed = true;
+    }
+    else
+    {
+      pushed = false;
     }
   }
-
-
-    while(pushed == true)
+  while(pushed == true)
   {
     digitalWrite(ledPin, HIGH);
     digitalWrite(LED, HIGH);
+    Serial.println("Red LED on");
     delay(1000);
     digitalWrite(LED, LOW);
+    Serial.println("Red LED off");
     delay(1000);
   }
-
 }
 
