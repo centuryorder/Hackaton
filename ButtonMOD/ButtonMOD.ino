@@ -55,6 +55,8 @@ void setup() {
 
 void loop(){
   // read the state of the pushbutton value:
+  while (true)
+  {
   buttonState = digitalRead(buttonPin);
   if(buttonState == HIGH)
   {
@@ -67,7 +69,7 @@ void loop(){
       pushed = false;
     }
   }
-  while(pushed == true)
+  if(pushed == true)
   {
     digitalWrite(ledPin, HIGH);
     digitalWrite(LED, HIGH);
@@ -76,6 +78,7 @@ void loop(){
     digitalWrite(LED, LOW);
     Serial.println("Red LED off");
     delay(1000);
+  }
   }
 }
 
