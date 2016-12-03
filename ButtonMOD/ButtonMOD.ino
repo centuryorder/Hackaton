@@ -26,7 +26,7 @@
  http://www.arduino.cc/en/Tutorial/Button
  */
 // most launchpads have a red LED
-#define LED RED_LED
+const int LED = RED_LED;
 
 //see pins_energia.h for more LED definitions
 //#define LED GREEN_LED
@@ -56,13 +56,6 @@ void setup() {
 void loop(){
   // read the state of the pushbutton value:
   buttonState = digitalRead(buttonPin);
-  while( pushed != true)
-  {
-    digitalWrite(ledPin, HIGH);
-    digitalWrite(LED, HIGH);
-    delay(1000);
-    digitalWrite(LED, LOW);
-    delay(1000);
     if(buttonState == HIGH)
   {
     if(pushed == false)
@@ -74,5 +67,12 @@ void loop(){
       pushed = false;
     }
   }
+    while(pushed == true)
+  {
+    digitalWrite(ledPin, HIGH);
+    digitalWrite(LED, HIGH);
+    delay(1000);
+    digitalWrite(LED, LOW);
+    delay(1000);
   }
 }
