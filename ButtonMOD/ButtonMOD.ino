@@ -72,6 +72,7 @@ void loop(){
   if(pushed == true)
   {
     digitalWrite(ledPin, HIGH);
+    Serial.println("Gree LED on");
     digitalWrite(LED, HIGH);
     Serial.println("Red LED on");
     delay(1000);
@@ -79,6 +80,13 @@ void loop(){
     Serial.println("Red LED off");
     delay(1000);
   }
+  else
+  {
+    digitalWrite(ledPin, LOW);
+    Serial.println("Green LED off");
+    digitalWrite(LED, LOW);
+    Serial.println("Red LED off");
   }
+}
 }
 
