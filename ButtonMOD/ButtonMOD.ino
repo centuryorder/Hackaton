@@ -1,30 +1,30 @@
 /*
  Button
-
-Turns on and off a light emitting diode(LED) connected to digital  
-pin 13, when pressing a pushbutton attached to pin 2. 
-
-
-The circuit:
-* LED attached from pin 13 to ground 
-* pushbutton attached to pin 2 from +3.3V
-* 10K resistor attached to pin 2 from ground
-
-* Note: on most Arduinos there is already an LED on the board
-attached to pin 13.
-
-
-created 2005
-by DojoDave <http://www.0j0.org>
-modified 30 Aug 2011
-by Tom Igoe
-modified Apr 27 2012
-by Robert Wessels
-
-This example code is in the public domain.
-
-http://www.arduino.cc/en/Tutorial/Button
-*/
+ 
+ Turns on and off a light emitting diode(LED) connected to digital  
+ pin 13, when pressing a pushbutton attached to pin 2. 
+ 
+ 
+ The circuit:
+ * LED attached from pin 13 to ground 
+ * pushbutton attached to pin 2 from +3.3V
+ * 10K resistor attached to pin 2 from ground
+ 
+ * Note: on most Arduinos there is already an LED on the board
+ attached to pin 13.
+ 
+ 
+ created 2005
+ by DojoDave <http://www.0j0.org>
+ modified 30 Aug 2011
+ by Tom Igoe
+ modified Apr 27 2012
+ by Robert Wessels
+ 
+ This example code is in the public domain.
+ 
+ http://www.arduino.cc/en/Tutorial/Button
+ */
 // most launchpads have a red LED
 const int LED = RED_LED;
 
@@ -55,38 +55,28 @@ void setup() {
 
 void loop(){
   // read the state of the pushbutton value:
-  while (true)
-  {
   buttonState = digitalRead(buttonPin);
+
   if(buttonState == HIGH)
   {
-    if(pushed == false)
-    {
-      pushed = true;
+    digitalWrite(ledPin, HIGH);
+      Serial.println("Green LED on");
+      digitalWrite(LED, HIGH);
+      Serial.println("Red LED on");
+      delay(500);
+      digitalWrite(LED, LOW);
+      Serial.println("Red LED off");
+      delay(500);
     }
     else
     {
-      pushed = false;
+      digitalWrite(ledPin, LOW);
+      digitalWrite(LED, LOW);
+      Serial.println("Green LED off");
+      Serial.println("Red LED off");
+      delay(5000);
     }
   }
-  if(pushed == true)
-  {
-    digitalWrite(ledPin, HIGH);
-    Serial.println("Gree LED on");
-    digitalWrite(LED, HIGH);
-    Serial.println("Red LED on");
-    delay(1000);
-    digitalWrite(LED, LOW);
-    Serial.println("Red LED off");
-    delay(1000);
-  }
-  else
-  {
-    digitalWrite(ledPin, LOW);
-    Serial.println("Green LED off");
-    digitalWrite(LED, LOW);
-    Serial.println("Red LED off");
-  }
-}
-}
+
+
 
